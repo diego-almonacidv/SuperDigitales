@@ -24,7 +24,7 @@ module UartRxHandler(
         input logic clk,
         input logic reset_n,
         input logic rx,
-        //input logic PBup,
+        //input logic PBup,,
         output logic tx,led1,led2,
         output logic dp,
         output logic [6:0] seven_seg,
