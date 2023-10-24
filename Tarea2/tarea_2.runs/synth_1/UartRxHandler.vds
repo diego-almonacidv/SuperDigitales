@@ -1,0 +1,381 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Sat Oct 21 23:16:46 2023
+# Process ID: 7884
+# Current directory: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1
+# Command line: vivado.exe -log UartRxHandler.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source UartRxHandler.tcl
+# Log file: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/UartRxHandler.vds
+# Journal file: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1\vivado.jou
+# Running On: DESKTOP-U8QJIBE, OS: Windows, CPU Frequency: 1996 MHz, CPU Physical cores: 8, Host memory: 7411 MB
+#-----------------------------------------------------------
+source UartRxHandler.tcl -notrace
+create_project: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 428.637 ; gain = 161.496
+Command: read_checkpoint -auto_incremental -incremental D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/utils_1/imports/synth_1/UartRxHandler.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/utils_1/imports/synth_1/UartRxHandler.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top UartRxHandler -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 8676
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 1272.098 ; gain = 410.375
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'UartRxHandler' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'uart_basic' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_basic.v:23]
+INFO: [Synth 8-6157] synthesizing module 'uart_baud_tick_gen' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+	Parameter CLK_FREQUENCY bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter OVERSAMPLING bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_baud_tick_gen' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:22]
+INFO: [Synth 8-6157] synthesizing module 'data_sync' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/data_sync.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'data_sync' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/data_sync.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:97]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:22]
+INFO: [Synth 8-6157] synthesizing module 'uart_baud_tick_gen__parameterized0' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+	Parameter CLK_FREQUENCY bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter OVERSAMPLING bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_baud_tick_gen__parameterized0' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'uart_basic' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/uart_basic.v:23]
+INFO: [Synth 8-6157] synthesizing module 'first_comand_dec' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:56]
+INFO: [Synth 8-6157] synthesizing module 'Counter' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/Counter.sv:23]
+	Parameter max_count bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Counter' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/Counter.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'first_comand_dec' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'driver_7seg' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'counter_3bit' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:23]
+INFO: [Synth 8-226] default block is never used [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:38]
+INFO: [Synth 8-6155] done synthesizing module 'counter_3bit' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'mux_3bit' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'mux_3bit' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'hex_to_7seg' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:23]
+INFO: [Synth 8-226] default block is never used [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:28]
+INFO: [Synth 8-6155] done synthesizing module 'hex_to_7seg' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'divisor_frecuencia' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'divisor_frecuencia' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'driver_7seg' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'blk_mem_gen_0' [D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/.Xil/Vivado-7884-DESKTOP-U8QJIBE/realtime/blk_mem_gen_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'blk_mem_gen_0' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/.Xil/Vivado-7884-DESKTOP-U8QJIBE/realtime/blk_mem_gen_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'douta' of module 'blk_mem_gen_0' is unconnected for instance 'BRAMA' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:92]
+WARNING: [Synth 8-7023] instance 'BRAMA' of module 'blk_mem_gen_0' has 12 connections declared, but only 11 given [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:92]
+WARNING: [Synth 8-7071] port 'douta' of module 'blk_mem_gen_0' is unconnected for instance 'BRAMB' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:106]
+WARNING: [Synth 8-7023] instance 'BRAMB' of module 'blk_mem_gen_0' has 12 connections declared, but only 11 given [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:106]
+INFO: [Synth 8-6157] synthesizing module 'procesing_core' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/procesing_core.sv:23]
+WARNING: [Synth 8-7071] port 'count' of module 'Counter' is unconnected for instance 'DELAY' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/procesing_core.sv:301]
+WARNING: [Synth 8-7023] instance 'DELAY' of module 'Counter' has 6 connections declared, but only 5 given [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/procesing_core.sv:301]
+INFO: [Synth 8-6157] synthesizing module 'promedio' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/promedio.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'promedio' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/promedio.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'abs_res' [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/abs_res.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'abs_res' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/abs_res.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'cordic_0' [D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/.Xil/Vivado-7884-DESKTOP-U8QJIBE/realtime/cordic_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'cordic_0' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/.Xil/Vivado-7884-DESKTOP-U8QJIBE/realtime/cordic_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'procesing_core' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/new/procesing_core.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'UartRxHandler' (0#1) [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/sources_1/imports/new/UartRxLogic.sv:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1370.246 ; gain = 508.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1370.246 ; gain = 508.523
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:21 . Memory (MB): peak = 1370.246 ; gain = 508.523
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1370.246 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'BRAMA'
+Finished Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'BRAMA'
+Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'BRAMB'
+Finished Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0/blk_mem_gen_0_in_context.xdc] for cell 'BRAMB'
+Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/cordic_0/cordic_0/cordic_0_in_context.xdc] for cell 'CORE/CORDIC'
+Finished Parsing XDC File [d:/documentos/projectos_vivado/tarea_2/tarea_2.gen/sources_1/ip/cordic_0/cordic_0/cordic_0_in_context.xdc] for cell 'CORE/CORDIC'
+Parsing XDC File [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/documentos/projectos_vivado/tarea_2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/UartRxHandler_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/UartRxHandler_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1449.832 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1449.832 ; gain = 0.000
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'BRAMA' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'BRAMB' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+WARNING: [Timing 38-316] Clock period '1000.000' specified during out-of-context synthesis of instance 'CORE/CORDIC' at clock pin 'aclk' is different from the actual clock period '10.000', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for BRAMA. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for BRAMB. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for CORE/CORDIC. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:41 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_rx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'first_comand_dec'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 RX_IDLE |                              000 |                              000
+                RX_START |                              001 |                              001
+                 RX_RECV |                              010 |                              010
+                 RX_STOP |                              011 |                              011
+                RX_READY |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_rx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 TX_IDLE |                               00 |                               00
+                TX_START |                               01 |                               01
+                 TX_SEND |                               10 |                               10
+                 TX_STOP |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+               writing_b |                               01 |                               10
+               writing_a |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'first_comand_dec'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:39 ; elapsed = 00:00:43 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   19 Bit       Adders := 2     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input    9 Bit       Adders := 1     
+	   3 Input    8 Bit       Adders := 1     
+	   2 Input    3 Bit       Adders := 4     
+	   2 Input    2 Bit       Adders := 7     
++---Registers : 
+	               32 Bit    Registers := 1     
+	               26 Bit    Registers := 1     
+	               19 Bit    Registers := 2     
+	               18 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
+	                5 Bit    Registers := 1     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	  20 Input   26 Bit        Muxes := 1     
+	  20 Input   18 Bit        Muxes := 1     
+	   2 Input   17 Bit        Muxes := 2     
+	   8 Input    8 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2     
+	   2 Input    6 Bit        Muxes := 1     
+	   3 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 3     
+	   3 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 5     
+	   4 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 6     
+	   3 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 21    
+	   4 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 7     
+	   3 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 7     
+	   5 Input    1 Bit        Muxes := 1     
+	  20 Input    1 Bit        Muxes := 6     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-3917] design UartRxHandler has port dp driven by constant 1
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:00:52 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++---------------+------------------+---------------+----------------+
+|Module Name    | RTL Object       | Depth x Width | Implemented As | 
++---------------+------------------+---------------+----------------+
+|procesing_core | rst_counter      | 32x1          | LUT            | 
+|UartRxHandler  | CORE/rst_counter | 32x1          | LUT            | 
++---------------+------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:07 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |blk_mem_gen_0 |         2|
+|2     |cordic_0      |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------------+------+
+|      |Cell          |Count |
++------+--------------+------+
+|1     |blk_mem_gen   |     1|
+|2     |blk_mem_gen_0 |     1|
+|3     |cordic        |     1|
+|4     |BUFG          |     1|
+|5     |CARRY4        |    41|
+|6     |LUT1          |    12|
+|7     |LUT2          |    76|
+|8     |LUT3          |    55|
+|9     |LUT4          |    32|
+|10    |LUT5          |    98|
+|11    |LUT6          |    95|
+|12    |MUXF7         |     1|
+|13    |FDCE          |    21|
+|14    |FDRE          |   127|
+|15    |FDSE          |     5|
+|16    |IBUF          |     3|
+|17    |OBUF          |    19|
++------+--------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 2 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:55 ; elapsed = 00:01:17 . Memory (MB): peak = 1449.832 ; gain = 508.523
+Synthesis Optimization Complete : Time (s): cpu = 00:01:18 ; elapsed = 00:01:22 . Memory (MB): peak = 1449.832 ; gain = 588.109
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.022 . Memory (MB): peak = 1449.832 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 42 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1449.832 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: c3ef1bf1
+INFO: [Common 17-83] Releasing license: Synthesis
+69 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:30 ; elapsed = 00:01:35 . Memory (MB): peak = 1449.832 ; gain = 987.363
+INFO: [Common 17-1381] The checkpoint 'D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/synth_1/UartRxHandler.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file UartRxHandler_utilization_synth.rpt -pb UartRxHandler_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sat Oct 21 23:18:44 2023...
