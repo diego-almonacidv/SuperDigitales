@@ -47,6 +47,9 @@ module UartRxHandler(
     logic [7:0] data,data_out;
     logic [9:0] address,address_out;
     
+    logic [17:0] salida_display;
+    logic [3:0] A,B,C,D,E,F;
+    
     uart_basic uart(
         .clk(clk),
         .reset(reset),
@@ -78,20 +81,20 @@ module UartRxHandler(
         .en(en),
         .clk(clk),
         .rst(reset_n),
-        .A(mem_out_a[3:0]),
-        .B(mem_out_a[7:4]),
-        .C(mem_out_b[3:0]),
-        .D(mem_out_b[7:4]),
-        .E(4'd0),
-        .F(4'd0),
+        .A(A),
+        .B(B),
+        .C(C),
+        .D(D),
+        .E(E),
+        .F(F),
         .G(4'd0),
-        .H(address[3:0]),
+        .H(4'd0),
         .dp(dp)
     );
     
     blk_mem_gen_0 BRAMA (
-        .addra(address[1:0]),
-        .addrb(address_out[1:0]),
+        .addra(address),
+        .addrb(address_out),
         .clka(clk),
         .clkb(clk),
         .dina(data),
@@ -104,8 +107,8 @@ module UartRxHandler(
     );
     
     blk_mem_gen_0 BRAMB (
-        .addra(address[1:0]),
-        .addrb(address_out[1:0]),
+        .addra(address),
+        .addrb(address_out),
         .clka(clk),
         .clkb(clk),
         .dina(data),
@@ -126,28 +129,12 @@ module UartRxHandler(
         .tx_busy(tx_busy),
         .address_out(address_out),
         .data_out(data_out),
-        .tx_start(tx_start)
+        .tx_start(tx_start),
+        .output_display(salida_display)
     );
    
-   /*
-    T1_design1_mejorado T1(
-        .clk(clk),
-        .resetN(reset_n),
-        .PushButton(debounced),
-        .IncPulse_out(add)
-    );
-    button_debouncer DEBOUNCER(
-        .button(PBup),
-        .clk(clk),
-        .rst(reset_n),
-        .out(debounced)
-    );
-    Counter #(.max_count(3)) ADDRB(
-        .clk(clk),
-        .rst(reset_n),
-        .en(add),
-        .rev(1'b0),
-        .count(addrb)
-    );
-    */
+   hex_to_dec HEX_TO_DEC(
+    .hex_in(salida_display),
+    .dec_out({F,E,D,C,B,A})
+   );
 endmodule

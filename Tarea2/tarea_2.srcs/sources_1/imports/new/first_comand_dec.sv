@@ -31,7 +31,6 @@ module first_comand_dec(
     output logic [5:0] action_onehot
     );
     logic [9:0] element_count;
-    assign element_count[9:2] = 8'd0;
     logic sum,rst_counter,counter_done;
     enum logic [1:0] {idle,writing_a,writing_b} state,next_state;
     
@@ -93,12 +92,12 @@ module first_comand_dec(
     end
 
     
-    Counter #(.max_count(3)) ELEMENT_COUNTER(
+    Counter #(.max_count(1023)) ELEMENT_COUNTER(
     .clk(clk),
     .rst(rst & rst_counter),
     .en(sum),
     .rev(1'b0),
-    .count(element_count[1:0]),
+    .count(element_count),
     .done(counter_done)
     );
     

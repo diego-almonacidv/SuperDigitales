@@ -26,6 +26,7 @@ module procesing_core(
     input logic clk,rst,tx_busy,
     output logic [7:0] data_out,
     output logic [9:0] address_out,
+    output logic [17:0] output_display,
     output logic tx_start
     );
     enum logic [4:0] {idle,send_a,send_b,busy_a,busy_b,send_suma,busy_suma,send_prom,busy_prom,adding_man,busy_man,send_man_1,send_man_2,send_man_3,adding_euc,busy_euc,sqrt_calculating,send_euc_1,send_euc_2} state,next_state;
@@ -35,17 +36,20 @@ module procesing_core(
     logic [25:0] suma_euclediana,next_euclediana;
     logic [15:0] cuadrado;
     logic [15:0] salida_euc;
+    logic [17:0] last_display,next_display;
     
     always_ff @(posedge clk) begin
         if (~rst) begin
             state <= idle;
             suma_manhattan <= 18'd0;
             suma_euclediana <= 26'd0;
+            last_display <= 18'd0;
         end
         else begin
             suma_euclediana <= next_euclediana;
             suma_manhattan <= next_manhattan;
             state <= next_state;
+            last_display <= next_display;
         end
     end
     
@@ -59,6 +63,7 @@ module procesing_core(
         next_manhattan = 18'd0;
         next_euclediana = 26'd0;
         in_tvalid = 1'b0;
+        next_display = last_display;
         case(state)
             idle: begin
                   if(action==6'b000001)
@@ -75,6 +80,7 @@ module procesing_core(
                     next_state = adding_euc;
                   end
             send_a: begin
+                    next_display = 18'd0;
                     data_out=mem_a;
                     rst_counter=1'b1;
                     rst_delay=1'b1;
@@ -100,6 +106,7 @@ module procesing_core(
                         end
                     end
             send_b: begin
+                    next_display = 18'd0;
                     data_out=mem_b;
                     rst_counter=1'b1;
                     rst_delay = 1'b1;
@@ -125,6 +132,7 @@ module procesing_core(
                         end
                     end
             send_suma: begin
+                    next_display = 18'd0;
                     data_out=suma;
                     rst_counter=1'b1;
                     rst_delay = 1'b1;
@@ -150,6 +158,7 @@ module procesing_core(
                         end
                     end
             send_prom: begin
+                    next_display = 18'd0;
                     data_out=prom;
                     rst_counter=1'b1;
                     rst_delay = 1'b1;
@@ -192,8 +201,10 @@ module procesing_core(
                         next_state = adding_man;
                         sum=1'b1;
                         end
-                    else
+                    else begin
                         next_state = send_man_1;
+                        next_display = suma_manhattan;
+                        end
                     end
             send_man_1: begin
                     next_manhattan=suma_manhattan;
@@ -210,25 +221,31 @@ module procesing_core(
             send_man_2: begin
                     next_manhattan=suma_manhattan;
                     data_out=suma_manhattan[15:8];
-                    rst_delay = 1'b1;
-                    if(delay_ready) begin
-                        tx_start=1'b1;
-                        next_state = send_man_3;
-                        rst_delay = 1'b0;
+                    next_state = send_man_2;
+                    if(~tx_busy) begin
+                        rst_delay = 1'b1;                 
+                        if(delay_ready) begin
+                            tx_start=1'b1;
+                            next_state = send_man_3;
+                            rst_delay = 1'b0;
+                            end
+                        else
+                            next_state = send_man_2;
                         end
-                    else
-                        next_state = send_man_2;
                     end
             send_man_3: begin
                     next_manhattan=suma_manhattan;
                     data_out={6'd0,suma_manhattan[17:16]};
-                    rst_delay = 1'b1;
-                    if(delay_ready) begin
-                        tx_start=1'b1;
-                        next_state = idle;
+                    next_state = send_man_3;
+                    if(~tx_busy) begin
+                        rst_delay = 1'b1;                 
+                        if(delay_ready) begin
+                            tx_start=1'b1;
+                            next_state = idle;
+                            end
+                        else
+                            next_state = send_man_3;
                         end
-                    else
-                        next_state = send_man_3;
                     end
             adding_euc: begin
                     next_euclediana=suma_euclediana;
@@ -255,15 +272,17 @@ module procesing_core(
                     end
             sqrt_calculating: begin
                     next_euclediana=suma_euclediana;
-                    if(out_tvalid)
+                    if(out_tvalid) begin
                         next_state = send_euc_1;
+                        next_display = {2'd0,salida_euc};
+                        end
                     else
                         next_state = sqrt_calculating;
                     end
             send_euc_1: begin
                     next_euclediana=suma_euclediana;
                     data_out=salida_euc[7:0];
-                    rst_delay = 1'b1;
+                    rst_delay = 1'b1;                 
                     if(delay_ready) begin
                         tx_start=1'b1;
                         next_state = send_euc_2;
@@ -275,26 +294,27 @@ module procesing_core(
             send_euc_2: begin
                     next_euclediana=suma_euclediana;
                     data_out=salida_euc[15:8];
-                    rst_delay = 1'b1;
-                    if(delay_ready) begin
-                        tx_start=1'b1;
-                        next_state = idle;
+                    next_state = send_euc_2;
+                    if(~tx_busy) begin
+                        rst_delay = 1'b1;                 
+                        if(delay_ready) begin
+                            tx_start=1'b1;
+                            next_state = idle;
+                            end
+                        else
+                            next_state = send_euc_2;
                         end
-                    else
-                        next_state = send_euc_2;
                     end
             default: next_state = idle;
         endcase
     end
-    
-    assign address_out[9:2]=8'd0;
-    
-    Counter #(.max_count(3)) ELEMENT_COUNTER(
+       
+    Counter #(.max_count(1023)) ELEMENT_COUNTER(
     .clk(clk),
     .rst(rst & rst_counter),
     .en(sum),
     .rev(1'b0),
-    .count(address_out[1:0]),
+    .count(address_out),
     .done(counter_done)
     );
     

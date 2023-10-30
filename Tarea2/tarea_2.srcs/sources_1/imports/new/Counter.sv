@@ -22,10 +22,10 @@
 
 module Counter #(parameter max_count = 8)(
     input logic clk,rst,en,rev,
-    output logic [$clog2(max_count)-1:0] count,
+    output logic [$clog2(max_count+1)-1:0] count,
     output logic done
     );
-    logic [$clog2(max_count)-1:0] next_count;
+    logic [$clog2(max_count+1)-1:0] next_count;
     
     always_ff @(posedge clk) begin
         if (~rst)
