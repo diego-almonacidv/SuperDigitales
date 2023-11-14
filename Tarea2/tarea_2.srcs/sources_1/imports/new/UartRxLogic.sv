@@ -49,7 +49,6 @@ module UartRxHandler(
     
     logic [17:0] salida_display;
     logic [3:0] A,B,C,D,E,F;
-    
     uart_basic uart(
         .clk(clk),
         .reset(reset),
@@ -130,11 +129,23 @@ module UartRxHandler(
         .address_out(address_out),
         .data_out(data_out),
         .tx_start(tx_start),
-        .output_display(salida_display)
+        .last_display(salida_display)
     );
-   
-   hex_to_dec HEX_TO_DEC(
-    .hex_in(salida_display),
-    .dec_out({F,E,D,C,B,A})
+   logic trigger;
+   logic[31:0] BCDin;
+   logic idle;
+   logic [32:0] outputBCD;
+   unsigned_to_bcd BCDConverter(
+        .clk(clk),
+        .reset(reset),
+        .trigger(trigger),
+        .in(BCDin),
+        .idle(idle),
+        .bcd(outputBCD)
    );
+   always_comb begin
+        trigger = (outputBCD != {14'b0,salida_display}) && idle;
+        BCDin = {14'b0,salida_display};
+        {F,E,D,C,B,A} = outputBCD[23:0];
+   end
 endmodule

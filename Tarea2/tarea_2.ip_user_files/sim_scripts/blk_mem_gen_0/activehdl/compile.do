@@ -4,16 +4,16 @@ onerror {quit -force}
 transcript on
 
 vlib work
-vmap -link {D:/documentos/projectos_vivado/tarea_2/tarea_2.cache/compile_simlib/activehdl}
+vmap -link {D:/SuperDigitales/Tarea2/tarea_2.cache/compile_simlib/activehdl}
 vlib activehdl/xpm
 vlib activehdl/blk_mem_gen_v8_4_6
 vlib activehdl/xil_defaultlib
 
 vlog -work xpm  -sv2k12 -l xpm -l blk_mem_gen_v8_4_6 -l xil_defaultlib \
-"D:/programas/vitis/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"D:/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93  \
-"D:/programas/vitis/Vivado/2023.1/data/ip/xpm/xpm_VCOMP.vhd" \
+"D:/Xilinx/Vivado/2023.1/data/ip/xpm/xpm_VCOMP.vhd" \
 
 vlog -work blk_mem_gen_v8_4_6  -v2k5 -l xpm -l blk_mem_gen_v8_4_6 -l xil_defaultlib \
 "../../../ipstatic/simulation/blk_mem_gen_v8_4.v" \

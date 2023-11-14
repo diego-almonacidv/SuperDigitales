@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Oct 11 19:14:48 2023
-# Process ID: 532
-# Current directory: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/blk_mem_gen_0_synth_1
+# Start of session at: Mon Oct 30 20:35:34 2023
+# Process ID: 21884
+# Current directory: D:/SuperDigitales/Tarea2/tarea_2.runs/blk_mem_gen_0_synth_1
 # Command line: vivado.exe -log blk_mem_gen_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source blk_mem_gen_0.tcl
-# Log file: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.vds
-# Journal file: D:/documentos/projectos_vivado/tarea_2/tarea_2.runs/blk_mem_gen_0_synth_1\vivado.jou
-# Running On: DESKTOP-U8QJIBE, OS: Windows, CPU Frequency: 1996 MHz, CPU Physical cores: 8, Host memory: 7411 MB
+# Log file: D:/SuperDigitales/Tarea2/tarea_2.runs/blk_mem_gen_0_synth_1/blk_mem_gen_0.vds
+# Journal file: D:/SuperDigitales/Tarea2/tarea_2.runs/blk_mem_gen_0_synth_1\vivado.jou
+# Running On: LAPTOP-TD654SF1, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 16948 MB
 #-----------------------------------------------------------
 source blk_mem_gen_0.tcl -notrace
