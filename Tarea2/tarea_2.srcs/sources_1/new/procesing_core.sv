@@ -27,7 +27,7 @@ module procesing_core #(parameter NINPUTS = 8)(
     output logic [$clog2(NINPUTS)+7:0] manhattan
     );
     
-    logic [8:0] suma_arr [NINPUTS-1:0];
+    logic [7:0] suma_arr [NINPUTS-1:0];
     logic [7:0] diff_arr_out [NINPUTS-1:0];
     
     
@@ -35,14 +35,14 @@ module procesing_core #(parameter NINPUTS = 8)(
     always_comb begin
         for(int i=0; i<NINPUTS; i++) begin
             suma_arr[i] = mem_a[i] + mem_b[i];
-            suma_arr_out[i] = suma_arr[i][7:0];
+            suma_arr_out[i] = suma_arr[i];
             avg_arr_out[i] = {1'b0,suma_arr[i][7:1]};
             diff_arr_out[i] = mem_a[i] < mem_b[i] ? mem_b[i]-mem_a[i] : mem_a[i]-mem_b[i];
         end
     end
     
     add_tree #(.NINPUTS(NINPUTS), .IWIDTH(8))(
-        .data_in(dif_arr_out),
+        .data_in(diff_arr_out),
         .data_out(manhattan)
     );
 

@@ -21,11 +21,11 @@
 
 
 module CoProcessor(
-        input logic clk,
+        input logic clock,
         input logic reset_n,
         input logic rx,
         //input logic PBup,
-        output logic tx,led1,led2,
+        output logic tx,
         output logic dp,
         output logic [6:0] seven_seg,
         output logic [7:0] en
@@ -33,7 +33,14 @@ module CoProcessor(
     logic[7:0] rx_data, tx_data;
     logic rst;
     assign rst = ~reset_n;
-    logic tx_start, rx_ready, tx_data, tx;
+    logic tx_start, rx_ready;
+    logic tx_busy;
+    logic clk;
+    clk_wiz_0 ClkDivider(
+        .reset(rst),
+        .clk_in1(clock),
+        .clk_out1(clk)
+    );
     uart_basic uart(
       .clk(clk),
       .reset(rst),
@@ -42,7 +49,8 @@ module CoProcessor(
       .rx_ready(rx_ready),
       .tx(tx),
       .tx_start(tx_start),
-      .tx_data(tx_data)//8bits
+      .tx_data(tx_data),//8bits
+      .tx_busy(tx_busy)
     );
     logic write_en_a, write_en_b;
     logic[7:0] data_out;
@@ -93,7 +101,7 @@ module CoProcessor(
         .mem_a(dataArrayA),
         .mem_b(dataArrayB),
         .suma_arr_out(Sum_Array),
-        .avg_arr_out(AvgArray),
+        .avg_arr_out(Avg_Array),
         .manhattan({Manhattan[2][1:0],Manhattan[1],Manhattan[0]})
     );
     logic[7:0] muxOut[1023:0];
@@ -103,7 +111,7 @@ module CoProcessor(
     3'b000:
         muxOut = Sum_Array;
     3'b001:
-        muxOut = {Sum_Array[1021:0],Manhattan};
+        muxOut = {Sum_Array[1020:0],Manhattan[2:0]};
     3'b010:
         muxOut = Avg_Array;
     3'b011:
@@ -121,7 +129,10 @@ module CoProcessor(
         .DoneCounter(DoneCounter),
         .StartSending(StartSending),
         .clk(clk),
-        .reset(rst)
+        .rst(rst),
+        .Tx_Data(tx_data),
+        .Tx_Start(tx_start),
+        .Tx_Busy(tx_busy)
     );
 
     CoprocesorSevenSegDriver SevenSegDriver(

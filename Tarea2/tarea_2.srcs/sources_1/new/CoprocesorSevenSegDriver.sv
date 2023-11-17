@@ -31,6 +31,7 @@ module CoprocesorSevenSegDriver(
     logic[31:0] unsigned_input, bcd_output;
     logic [7:0] prevManhattan [2:0];
     logic [7:0] prevManhattan_next [2:0];
+    logic reset_n = ~rst;
     //Mux logic in order to show sum
     always_comb begin
         if(~ShowSum)
@@ -38,15 +39,18 @@ module CoprocesorSevenSegDriver(
         else
             {F,E,D,C,B,A} = bcd_output[23:0]; 
     end
+    logic busy_n;
     always_comb begin
         unsigned_input = {8'd0,prevManhattan[2],prevManhattan[1],prevManhattan[0]};
+        busy_n = ~busy;
     end
+    
     unsigned_to_bcd BCD_converter(
         .clk(clk),
         .reset(rst),
         .trigger(init_conversion),
         .in(unsigned_input),
-        .idle(~busy),
+        .idle(busy_n),
         .bcd(bcd_output)
     );
     driver_7seg Segs(
@@ -68,6 +72,10 @@ module CoprocesorSevenSegDriver(
         if(prevManhattan!=Manhattan && ShowSum && ~busy)begin
             prevManhattan_next = Manhattan;
             init_conversion = 1'b1;
+        end
+        else begin
+            prevManhattan_next = prevManhattan;
+            init_conversion = 1'b0;
         end
     end
     always_ff @(posedge clk) begin

@@ -1,0 +1,449 @@
+
+*** Running vivado
+    with args -log CoProcessor.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source CoProcessor.tcl
+
+
+ECHO est  desactivado.
+ECHO est  desactivado.
+
+****** Vivado v2023.1 (64-bit)
+  **** SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+  **** IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+  **** SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source CoProcessor.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 447.887 ; gain = 164.410
+Command: read_checkpoint -auto_incremental -incremental D:/SuperDigitales/Tarea2/tarea_2.srcs/utils_1/imports/synth_1/UartRxHandler.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from D:/SuperDigitales/Tarea2/tarea_2.srcs/utils_1/imports/synth_1/UartRxHandler.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top CoProcessor -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 28576
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1290.137 ; gain = 409.734
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'CoProcessor' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [D:/SuperDigitales/Tarea2/tarea_2.runs/synth_1/.Xil/Vivado-18640-LAPTOP-TD654SF1/realtime/clk_wiz_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.runs/synth_1/.Xil/Vivado-18640-LAPTOP-TD654SF1/realtime/clk_wiz_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'locked' of module 'clk_wiz_0' is unconnected for instance 'ClkDivider' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:39]
+WARNING: [Synth 8-7023] instance 'ClkDivider' of module 'clk_wiz_0' has 4 connections declared, but only 3 given [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:39]
+INFO: [Synth 8-6157] synthesizing module 'uart_basic' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_basic.v:23]
+INFO: [Synth 8-6157] synthesizing module 'uart_baud_tick_gen' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+	Parameter CLK_FREQUENCY bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter OVERSAMPLING bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_baud_tick_gen' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+INFO: [Synth 8-6157] synthesizing module 'uart_rx' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:22]
+INFO: [Synth 8-6157] synthesizing module 'data_sync' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/data_sync.v:22]
+INFO: [Synth 8-6155] done synthesizing module 'data_sync' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/data_sync.v:22]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:97]
+INFO: [Synth 8-6155] done synthesizing module 'uart_rx' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_rx.v:22]
+INFO: [Synth 8-6157] synthesizing module 'uart_baud_tick_gen__parameterized0' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+	Parameter CLK_FREQUENCY bound to: 100000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter OVERSAMPLING bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'uart_baud_tick_gen__parameterized0' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v:17]
+INFO: [Synth 8-6157] synthesizing module 'uart_tx' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'uart_tx' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_tx.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'uart_basic' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_basic.v:23]
+INFO: [Synth 8-6157] synthesizing module 'first_comand_dec' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:53]
+INFO: [Synth 8-6157] synthesizing module 'Counter' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/Counter.sv:23]
+	Parameter max_count bound to: 1023 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'Counter' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/Counter.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'first_comand_dec' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv:23]
+WARNING: [Synth 8-7071] port 'led1' of module 'first_comand_dec' is unconnected for instance 'CommandDecoder' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:58]
+WARNING: [Synth 8-7071] port 'led2' of module 'first_comand_dec' is unconnected for instance 'CommandDecoder' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:58]
+WARNING: [Synth 8-7023] instance 'CommandDecoder' of module 'first_comand_dec' has 10 connections declared, but only 8 given [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:58]
+INFO: [Synth 8-6157] synthesizing module 'Memory' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/Memory.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/Memory.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'ActionController' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ActionController.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'ActionController' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ActionController.sv:23]
+WARNING: [Synth 8-689] width (3) of port connection 'OpCode' does not match port width (5) of module 'ActionController' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:93]
+WARNING: [Synth 8-7071] port 'clk' of module 'ActionController' is unconnected for instance 'ActionControllerModule' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:89]
+WARNING: [Synth 8-7071] port 'rst' of module 'ActionController' is unconnected for instance 'ActionControllerModule' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:89]
+WARNING: [Synth 8-7023] instance 'ActionControllerModule' of module 'ActionController' has 8 connections declared, but only 6 given [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:89]
+INFO: [Synth 8-6157] synthesizing module 'procesing_core' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/procesing_core.sv:23]
+	Parameter NINPUTS bound to: 1024 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'add_tree' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/add_tree.sv:23]
+	Parameter NINPUTS bound to: 1024 - type: integer 
+	Parameter IWIDTH bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'add_tree' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/add_tree.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'procesing_core' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/procesing_core.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'SendingManager' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv:23]
+WARNING: [Synth 8-7071] port 'done' of module 'Counter' is unconnected for instance 'CounterModule' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv:58]
+WARNING: [Synth 8-7023] instance 'CounterModule' of module 'Counter' has 6 connections declared, but only 5 given [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv:58]
+INFO: [Synth 8-6157] synthesizing module 'ArraySenderFSM' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ArraySenderFSM.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'ArraySenderFSM' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ArraySenderFSM.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'SendingManager' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'CoprocesorSevenSegDriver' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'unsigned_to_bcd' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/unsigned_to_bcd.sv:25]
+INFO: [Synth 8-6155] done synthesizing module 'unsigned_to_bcd' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/unsigned_to_bcd.sv:25]
+INFO: [Synth 8-6157] synthesizing module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'counter_3bit' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:23]
+INFO: [Synth 8-226] default block is never used [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:38]
+INFO: [Synth 8-6155] done synthesizing module 'counter_3bit' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'mux_3bit' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'mux_3bit' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'hex_to_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:23]
+INFO: [Synth 8-226] default block is never used [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:28]
+INFO: [Synth 8-6155] done synthesizing module 'hex_to_7seg' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'divisor_frecuencia' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'divisor_frecuencia' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'driver_7seg' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv:23]
+WARNING: [Synth 8-689] width (7) of port connection 'A' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:61]
+WARNING: [Synth 8-689] width (7) of port connection 'B' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:62]
+WARNING: [Synth 8-689] width (7) of port connection 'C' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:63]
+WARNING: [Synth 8-689] width (7) of port connection 'D' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:64]
+WARNING: [Synth 8-689] width (7) of port connection 'E' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:65]
+WARNING: [Synth 8-689] width (7) of port connection 'F' does not match port width (4) of module 'driver_7seg' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:66]
+WARNING: [Synth 8-7071] port 'dp' of module 'driver_7seg' is unconnected for instance 'Segs' [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:56]
+WARNING: [Synth 8-7023] instance 'Segs' of module 'driver_7seg' has 13 connections declared, but only 12 given [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:56]
+INFO: [Synth 8-6155] done synthesizing module 'CoprocesorSevenSegDriver' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:23]
+INFO: [Synth 8-6155] done synthesizing module 'CoProcessor' (0#1) [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:23]
+WARNING: [Synth 8-3848] Net busy in module/entity CoprocesorSevenSegDriver does not have driver. [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv:30]
+WARNING: [Synth 8-3848] Net dp in module/entity CoProcessor does not have driver. [D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv:29]
+WARNING: [Synth 8-7129] Port dp in module CoProcessor is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:24 ; elapsed = 00:00:24 . Memory (MB): peak = 1903.750 ; gain = 1023.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1903.750 ; gain = 1023.348
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:24 ; elapsed = 00:00:25 . Memory (MB): peak = 1903.750 ; gain = 1023.348
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.616 . Memory (MB): peak = 1903.750 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'ClkDivider'
+Finished Parsing XDC File [d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc] for cell 'ClkDivider'
+Parsing XDC File [D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
+Finished Parsing XDC File [D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/CoProcessor_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/CoProcessor_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 2016.977 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.134 . Memory (MB): peak = 2016.977 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for clock. (constraint file  d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for clock. (constraint file  d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0/clk_wiz_0_in_context.xdc, line 4).
+Applied set_property KEEP_HIERARCHY = SOFT for ClkDivider. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6702] IncrSynth : Design change found in an area of the design that prevents previous synthesis information being used, Reverting to default synthesis
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:41 ; elapsed = 00:00:41 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:41 ; elapsed = 00:00:41 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_rx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'uart_tx'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'first_comand_dec'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'ArraySenderFSM'
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'unsigned_to_bcd'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 RX_IDLE |                              000 |                              000
+                RX_START |                              001 |                              001
+                 RX_RECV |                              010 |                              010
+                 RX_STOP |                              011 |                              011
+                RX_READY |                              100 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_rx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 TX_IDLE |                               00 |                               00
+                TX_START |                               01 |                               01
+                 TX_SEND |                               10 |                               10
+                 TX_STOP |                               11 |                               11
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'uart_tx'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    idle |                               00 |                               00
+               writing_b |                               01 |                               10
+               writing_a |                               10 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'first_comand_dec'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    IDLE |                             0001 |                             0000
+           ACTIVATE_UART |                             0010 |                             0001
+            WAITING_UART |                             0100 |                             0011
+       INCREMENT_COUNTER |                             1000 |                             0010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'ArraySenderFSM'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  S_IDLE |                              001 |                              000
+                 S_SHIFT |                              010 |                              001
+                  S_ADD3 |                              100 |                              010
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'one-hot' in module 'unsigned_to_bcd'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:08 ; elapsed = 00:01:09 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : Design change found in an area of the design that prevents previous synthesis information being used
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   19 Bit       Adders := 2     
+	1024 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input   10 Bit       Adders := 4     
+	   2 Input    8 Bit       Adders := 1024  
+	   3 Input    8 Bit       Adders := 1024  
+	   2 Input    6 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 8     
+	   2 Input    3 Bit       Adders := 4     
+	   2 Input    2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 3     
+	               19 Bit    Registers := 2     
+	               10 Bit    Registers := 3     
+	                8 Bit    Registers := 3077  
+	                6 Bit    Registers := 1     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   3 Input   32 Bit        Muxes := 2     
+	   2 Input   17 Bit        Muxes := 2     
+	   2 Input   10 Bit        Muxes := 4     
+	   6 Input   10 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 2048  
+	   8 Input    8 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 4     
+	   3 Input    6 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 1     
+	   3 Input    5 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 2     
+	   6 Input    3 Bit        Muxes := 1     
+	   4 Input    3 Bit        Muxes := 3     
+	   5 Input    3 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 9     
+	   4 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 8     
+	   3 Input    1 Bit        Muxes := 10    
+	   6 Input    1 Bit        Muxes := 3     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7129] Port dp in module CoProcessor is either unconnected or has no load
+INFO: [Synth 8-5544] ROM "Segs/COUNT/seven_seg" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Segs/HEX_7SEG/Out" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "DoneCounter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "DoneCounter" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[17]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[18]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[18]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[19]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[19]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[20]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[20]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[21]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[21]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[22]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[22]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[23]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[23]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[24]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[24]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[25]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[25]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[26]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[26]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[27]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[27]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[28]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[28]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[29]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[29]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[30]'
+INFO: [Synth 8-3886] merging instance 'SevenSegDriver/Segs/DIVISOR/counter_reg[30]' (FDC) to 'SevenSegDriver/Segs/DIVISOR/counter_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (SevenSegDriver/\Segs/DIVISOR/counter_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (SevenSegDriver/\BCD_converter/FSM_onehot_state_reg[2] )
+WARNING: [Synth 8-3332] Sequential element (BCD_converter/FSM_onehot_state_reg[2]) is unused and will be removed from module CoprocesorSevenSegDriver.
+WARNING: [Synth 8-3332] Sequential element (BCD_converter/FSM_onehot_state_reg[0]) is unused and will be removed from module CoprocesorSevenSegDriver.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:01 ; elapsed = 00:02:29 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:10 ; elapsed = 00:02:38 . Memory (MB): peak = 2016.977 ; gain = 1136.574
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:06:49 ; elapsed = 00:07:18 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:07:34 ; elapsed = 00:08:14 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (SevenSegDriver/BCD_converter/FSM_onehot_state_reg[1]) is unused and will be removed from module CoProcessor.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:07:47 ; elapsed = 00:08:28 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:07:48 ; elapsed = 00:08:28 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:08:02 ; elapsed = 00:08:42 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:08:03 ; elapsed = 00:08:44 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:08:10 ; elapsed = 00:08:51 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:08:11 ; elapsed = 00:08:52 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_wiz_0     |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |clk_wiz |     1|
+|2     |CARRY4  |  6730|
+|3     |LUT1    |    33|
+|4     |LUT2    | 16419|
+|5     |LUT3    | 12464|
+|6     |LUT4    | 12307|
+|7     |LUT5    |  3624|
+|8     |LUT6    | 15084|
+|9     |MUXF7   |  1088|
+|10    |MUXF8   |   544|
+|11    |FDCE    |    21|
+|12    |FDRE    | 24727|
+|13    |FDSE    |     6|
+|14    |IBUF    |     2|
+|15    |OBUF    |    16|
+|16    |OBUFT   |     1|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:08:11 ; elapsed = 00:08:52 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:07:38 ; elapsed = 00:08:45 . Memory (MB): peak = 2383.191 ; gain = 1389.562
+Synthesis Optimization Complete : Time (s): cpu = 00:08:11 ; elapsed = 00:08:53 . Memory (MB): peak = 2383.191 ; gain = 1502.789
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 2383.191 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8362 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2383.191 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 7c4c7864
+INFO: [Common 17-83] Releasing license: Synthesis
+98 Infos, 27 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:08:37 ; elapsed = 00:09:19 . Memory (MB): peak = 2383.191 ; gain = 1901.699
+INFO: [Common 17-1381] The checkpoint 'D:/SuperDigitales/Tarea2/tarea_2.runs/synth_1/CoProcessor.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:14 ; elapsed = 00:00:11 . Memory (MB): peak = 2383.191 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file CoProcessor_utilization_synth.rpt -pb CoProcessor_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Nov 15 10:58:34 2023...

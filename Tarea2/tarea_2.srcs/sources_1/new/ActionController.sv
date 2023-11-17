@@ -23,7 +23,7 @@
 module ActionController(
     input logic [4:0] Action,
     output logic StartSending, SaveData, ShowSum,
-    output logic [10:0] DoneCounter,
+    output logic [9:0] DoneCounter,
     output logic [4:0] OpCode,
     input logic clk, rst
     );
