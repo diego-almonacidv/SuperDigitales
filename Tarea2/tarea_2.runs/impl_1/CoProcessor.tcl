@@ -17,7 +17,7 @@ proc create_report { reportName command } {
   }
 }
 namespace eval ::optrace {
-  variable script "D:/SuperDigitales/Tarea2/tarea_2.runs/impl_1/CoProcessor.tcl"
+  variable script "D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/impl_1/CoProcessor.tcl"
   variable category "vivado_impl"
 }
 
@@ -115,6 +115,8 @@ proc step_failed { step } {
 OPTRACE "impl_1" END { }
 }
 
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 
 OPTRACE "impl_1" START { ROLLUP_1 }
 OPTRACE "Phase: Init Design" START { ROLLUP_AUTO }
@@ -122,26 +124,25 @@ start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param chipscope.maxJobs 4
+  set_param checkpoint.writeSynthRtdsInDcp 1
+  set_param chipscope.maxJobs 2
   set_param xicom.use_bs_reader 1
-  set_param runs.launchOptions { -jobs 8  }
+  set_param runs.launchOptions { -jobs 4  }
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
 OPTRACE "create in-memory project" END { }
 OPTRACE "set parameters" START { }
-  set_property webtalk.parent_dir D:/SuperDigitales/Tarea2/tarea_2.cache/wt [current_project]
-  set_property parent.project_path D:/SuperDigitales/Tarea2/tarea_2.xpr [current_project]
-  set_property ip_output_repo D:/SuperDigitales/Tarea2/tarea_2.cache/ip [current_project]
+  set_property webtalk.parent_dir D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.cache/wt [current_project]
+  set_property parent.project_path D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.xpr [current_project]
+  set_property ip_output_repo D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
 OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
-  add_files -quiet D:/SuperDigitales/Tarea2/tarea_2.runs/synth_1/CoProcessor.dcp
-  read_ip -quiet d:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
+  add_files -quiet D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/synth_1/CoProcessor.dcp
 OPTRACE "read constraints: implementation" START { }
-  read_xdc D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc
+  read_xdc D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }
@@ -306,7 +307,6 @@ set rc [catch {
   create_msg_db write_bitstream.pb
 OPTRACE "read constraints: write_bitstream" START { }
 OPTRACE "read constraints: write_bitstream" END { }
-  set_property XPM_LIBRARIES XPM_CDC [current_project]
   catch { write_mem_info -force -no_partial_mmi CoProcessor.mmi }
 OPTRACE "write_bitstream setup" END { }
 OPTRACE "write_bitstream" START { }

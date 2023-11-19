@@ -21,7 +21,7 @@
 
 
 module SendingManager(
-    input logic StartSending, SaveData,
+    input logic StartSending,
     input logic[9:0] DoneCounter,
     input logic[7:0] Array[1023:0],
     input logic Tx_Busy,
@@ -29,32 +29,26 @@ module SendingManager(
     output logic[7:0] Tx_Data,
     output logic Tx_Start
     );
-    logic[7:0] savedArray[1023:0];
     logic[9:0] Done_Counter_Reg;
+    logic SaveData;
+    logic ResetCounter;
+    logic Increment;
+    logic[9:0] Count;
     always_ff @(posedge clk) begin
     if(rst)begin
-        Done_Counter_Reg = 0;
-        for(int i=0; i<1024; i++) 
-                savedArray[i] <= 0;   
-                
+        Done_Counter_Reg <= 0;
+        Tx_Data <= 8'd0;             
     end  
     else begin
         if(StartSending)begin
             Done_Counter_Reg<=DoneCounter;
         end
         if(SaveData)begin
-              savedArray <= Array;
+            Tx_Data <= Array[Count];
         end
     end 
     end
-    logic[9:0] Sel;
-    logic ResetCounter;
-    logic Increment;
-    logic[9:0] Count;
-    always_comb begin
-        Sel = Count;
-        Tx_Data = savedArray[Sel];
-    end
+    
     Counter #(.max_count(1023)) CounterModule(
         .clk(clk),
         .rst(~rst && ~ResetCounter),
@@ -71,7 +65,8 @@ module SendingManager(
         .rst(rst),
         .Done_Counter_Reg(Done_Counter_Reg),
         .Tx_Busy(Tx_Busy),
-        .Tx_Start(Tx_Start)
+        .Tx_Start(Tx_Start),
+        .SaveData(SaveData)
     );
     
 endmodule

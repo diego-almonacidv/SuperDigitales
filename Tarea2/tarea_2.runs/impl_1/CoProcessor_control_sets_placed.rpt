@@ -1,8 +1,8 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
-| Date         : Wed Nov 15 11:02:25 2023
-| Host         : LAPTOP-TD654SF1 running 64-bit major release  (build 9200)
+| Date         : Sun Nov 19 15:07:30 2023
+| Host         : DESKTOP-U8QJIBE running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file CoProcessor_control_sets_placed.rpt
 | Design       : CoProcessor
 | Device       : xc7a100t
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    12 |
-|    Minimum number of control sets                        |    12 |
+| Total control sets                                       |    21 |
+|    Minimum number of control sets                        |    21 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    25 |
+| Unused register locations in slices containing registers |    67 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    12 |
+| Total control sets |    21 |
 | >= 0 to < 4        |     1 |
-| >= 4 to < 6        |     1 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     2 |
+| >= 4 to < 6        |     7 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     3 |
 | >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
-| >= 16              |     7 |
+| >= 16              |     8 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,33 +58,42 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              32 |           11 |
+| No           | No                    | No                     |            8225 |         2060 |
 | No           | No                    | Yes                    |              21 |            8 |
-| No           | Yes                   | No                     |              30 |           10 |
+| No           | Yes                   | No                     |           10322 |         3164 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |           24668 |         9986 |
+| Yes          | Yes                   | No                     |           16565 |         5797 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
-|              Clock Signal              |                             Enable Signal                             |                           Set/Reset Signal                          | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
-|  SevenSegDriver/Segs/DIVISOR/new_clock |                                                                       | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |                1 |              3 |         3.00 |
-|  ClkDivider/inst/clk_out1              | SendingManagerModule/ArraySenderFSMModule/FSM_onehot_state[3]_i_1_n_0 | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |                1 |              4 |         4.00 |
-|  ClkDivider/inst/clk_out1              | uart/uart_tx_blk/tx_data_reg[7]_i_1_n_0                               | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |                4 |              8 |         2.00 |
-|  ClkDivider/inst/clk_out1              | uart/uart_rx_blk/rx_data[7]_i_1_n_0                                   | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |                4 |              8 |         2.00 |
-|  ClkDivider/inst/clk_out1              | CommandDecoder/ELEMENT_COUNTER/sum                                    | CommandDecoder/ELEMENT_COUNTER/p_0_in                               |                3 |             10 |         3.33 |
-|  ClkDivider/inst/clk_out1              |                                                                       | uart/uart_tx_blk/SR[0]                                              |                5 |             19 |         3.80 |
-|  ClkDivider/inst/clk_out1              |                                                                       | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |               12 |             29 |         2.42 |
-|  ClkDivider/inst/clk_out1              |                                                                       |                                                                     |               11 |             32 |         2.91 |
-|  ClkDivider/inst/clk_out1              | SendingManagerModule/ArraySenderFSMModule/Q[3]                        | SendingManagerModule/ArraySenderFSMModule/FSM_onehot_state_reg[0]_0 |               18 |             64 |         3.56 |
-|  ClkDivider/inst/clk_out1              | CommandDecoder/E[0]                                                   | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |             2785 |           8190 |         2.94 |
-|  ClkDivider/inst/clk_out1              | CommandDecoder/FSM_sequential_state_reg[1]_0[0]                       | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |             2789 |           8192 |         2.94 |
-|  ClkDivider/inst/clk_out1              | uart/uart_rx_blk/E[0]                                                 | SendingManagerModule/ArraySenderFSMModule/SR[0]                     |             4382 |           8192 |         1.87 |
-+----------------------------------------+-----------------------------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
++----------------------------------+-------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
+|           Clock Signal           |                  Enable Signal                  |                           Set/Reset Signal                          | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------------------+-------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
+|  SevenSegDriver/Segs/DIVISOR/CLK |                                                 | CORE/ADD_TREE/SR_BUFG[0]                                            |                2 |              3 |         1.50 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[15]_i_1_n_0  | CORE/ADD_TREE/SR_BUFG[0]                                            |                1 |              4 |         4.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[23]_i_1_n_0  | CORE/ADD_TREE/SR_BUFG[0]                                            |                2 |              4 |         2.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[19]_i_1_n_0  | CORE/ADD_TREE/SR_BUFG[0]                                            |                1 |              4 |         4.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[3]_i_1_n_0   | CORE/ADD_TREE/SR_BUFG[0]                                            |                2 |              4 |         2.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[11]_i_1_n_0  | CORE/ADD_TREE/SR_BUFG[0]                                            |                2 |              4 |         2.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/shift[7]_i_1_n_0   | CORE/ADD_TREE/SR_BUFG[0]                                            |                1 |              4 |         4.00 |
+|  clock_IBUF_BUFG                 | uart/uart_rx_blk/rx_data_reg[7]_0               | CORE/ADD_TREE/SR_BUFG[0]                                            |                1 |              4 |         4.00 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/counter_next       | CORE/ADD_TREE/SR_BUFG[0]                                            |                3 |              6 |         2.00 |
+|  clock_IBUF_BUFG                 | SendingManagerModule/ArraySenderFSMModule/Q[1]  | CORE/ADD_TREE/SR_BUFG[0]                                            |                6 |              8 |         1.33 |
+|  clock_IBUF_BUFG                 | uart/uart_tx_blk/tx_data_reg[7]_i_1_n_0         | CORE/ADD_TREE/SR_BUFG[0]                                            |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG                 | uart/uart_rx_blk/rx_data[7]_i_1_n_0             | CORE/ADD_TREE/SR_BUFG[0]                                            |                4 |              8 |         2.00 |
+|  clock_IBUF_BUFG                 | CommandDecoder/ELEMENT_COUNTER/sum              | CommandDecoder/ELEMENT_COUNTER/count[9]_i_1_n_0                     |                7 |             10 |         1.43 |
+|  clock_IBUF_BUFG                 |                                                 | uart/uart_tx_blk/FSM_sequential_state_reg[1]_1[0]                   |                5 |             19 |         3.80 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/bcd_next           | CORE/ADD_TREE/SR_BUFG[0]                                            |                7 |             24 |         3.43 |
+|  clock_IBUF_BUFG                 | SevenSegDriver/BCD_converter/E[0]               | CORE/ADD_TREE/SR_BUFG[0]                                            |                7 |             24 |         3.43 |
+|  clock_IBUF_BUFG                 | SendingManagerModule/ArraySenderFSMModule/Q[4]  | SendingManagerModule/ArraySenderFSMModule/FSM_onehot_state_reg[0]_0 |               38 |             65 |         1.71 |
+|  clock_IBUF_BUFG                 | CommandDecoder/FSM_sequential_state_reg[0]_0[0] | CORE/ADD_TREE/SR_BUFG[0]                                            |             2848 |           8192 |         2.88 |
+|  clock_IBUF_BUFG                 | CommandDecoder/E[0]                             | CORE/ADD_TREE/SR_BUFG[0]                                            |             2863 |           8192 |         2.86 |
+|  clock_IBUF_BUFG                 |                                                 |                                                                     |             2060 |           8225 |         3.99 |
+|  clock_IBUF_BUFG                 |                                                 | CORE/ADD_TREE/SR_BUFG[0]                                            |             3165 |          10321 |         3.26 |
++----------------------------------+-------------------------------------------------+---------------------------------------------------------------------+------------------+----------------+--------------+
 
 

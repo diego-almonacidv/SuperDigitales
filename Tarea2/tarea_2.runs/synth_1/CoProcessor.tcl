@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "D:/SuperDigitales/Tarea2/tarea_2.runs/synth_1/CoProcessor.tcl"
+  variable script "D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/synth_1/CoProcessor.tcl"
   variable category "vivado_synth"
 }
 
@@ -70,54 +70,50 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 4
+set_param checkpoint.writeSynthRtdsInDcp 1
+set_param chipscope.maxJobs 2
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
 set_param project.compositeFile.enableAutoGeneration 0
 set_param synth.vivado.isSynthRun true
-set_msg_config -source 4 -id {IP_Flow 19-2162} -severity warning -new_severity info
-set_property webtalk.parent_dir D:/SuperDigitales/Tarea2/tarea_2.cache/wt [current_project]
-set_property parent.project_path D:/SuperDigitales/Tarea2/tarea_2.xpr [current_project]
-set_property XPM_LIBRARIES XPM_CDC [current_project]
+set_property webtalk.parent_dir D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.cache/wt [current_project]
+set_property parent.project_path D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property ip_output_repo d:/SuperDigitales/Tarea2/tarea_2.cache/ip [current_project]
+set_property ip_output_repo d:/documentos/repos/SuperDigitales/Tarea2/tarea_2.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ActionController.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ArraySenderFSM.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/Counter.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/Memory.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/add_tree.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/procesing_core.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/unsigned_to_bcd.sv
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ActionController.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/ArraySenderFSM.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoprocesorSevenSegDriver.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/Counter.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/Memory.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/SendingManager.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/counter_3bit.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/divisor_frecuencia.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/driver_7seg.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/first_comand_dec.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/hex_to_7seg.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/mux_3bit.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/pipelined_add_tree.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/procesing_core.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/unsigned_to_bcd.sv
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/new/CoProcessor.sv
 }
 read_verilog -library xil_defaultlib {
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/data_sync.v
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_basic.v
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_rx.v
-  D:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_tx.v
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/data_sync.v
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_basic.v
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_baud_tick_gen.v
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_rx.v
+  D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/imports/new/uart_tx.v
 }
-read_ip -quiet d:/SuperDigitales/Tarea2/tarea_2.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
-set_property used_in_implementation false [get_files -all d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_board.xdc]
-set_property used_in_implementation false [get_files -all d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc]
-set_property used_in_implementation false [get_files -all d:/SuperDigitales/Tarea2/tarea_2.gen/sources_1/ip/clk_wiz_0/clk_wiz_0_ooc.xdc]
-
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -127,16 +123,14 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc
-set_property used_in_implementation false [get_files D:/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
+read_xdc D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc
+set_property used_in_implementation false [get_files D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.srcs/constrs_1/imports/projectos_vivado/Nexys-A7-100T-Master.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
-
-read_checkpoint -auto_incremental -incremental D:/SuperDigitales/Tarea2/tarea_2.srcs/utils_1/imports/synth_1/UartRxHandler.dcp
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top CoProcessor -part xc7a100tcsg324-1
+synth_design -top CoProcessor -part xc7a100tcsg324-1 -incremental_mode off
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"

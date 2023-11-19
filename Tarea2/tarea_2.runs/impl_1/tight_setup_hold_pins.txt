@@ -1,0 +1,8 @@
++====================+===================+=======================================+
+| Launch Setup Clock | Launch Hold Clock | Pin                                   |
++====================+===================+=======================================+
+| sys_clk_pin        | sys_clk_pin       | SendingManagerModule/Tx_Data_reg[1]/D |
+| sys_clk_pin        | sys_clk_pin       | SendingManagerModule/Tx_Data_reg[5]/D |
+| sys_clk_pin        | sys_clk_pin       | SendingManagerModule/Tx_Data_reg[4]/D |
+| sys_clk_pin        | sys_clk_pin       | SendingManagerModule/Tx_Data_reg[3]/D |
++--------------------+-------------------+---------------------------------------+

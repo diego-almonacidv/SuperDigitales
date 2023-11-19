@@ -3,12 +3,12 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Nov 15 10:58:42 2023
-# Process ID: 27740
-# Current directory: D:/SuperDigitales/Tarea2/tarea_2.runs/impl_1
+# Start of session at: Sun Nov 19 15:00:17 2023
+# Process ID: 15152
+# Current directory: D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/impl_1
 # Command line: vivado.exe -log CoProcessor.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source CoProcessor.tcl -notrace
-# Log file: D:/SuperDigitales/Tarea2/tarea_2.runs/impl_1/CoProcessor.vdi
-# Journal file: D:/SuperDigitales/Tarea2/tarea_2.runs/impl_1\vivado.jou
-# Running On: LAPTOP-TD654SF1, OS: Windows, CPU Frequency: 2304 MHz, CPU Physical cores: 8, Host memory: 16948 MB
+# Log file: D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/impl_1/CoProcessor.vdi
+# Journal file: D:/documentos/repos/SuperDigitales/Tarea2/tarea_2.runs/impl_1\vivado.jou
+# Running On: DESKTOP-U8QJIBE, OS: Windows, CPU Frequency: 1996 MHz, CPU Physical cores: 8, Host memory: 7411 MB
 #-----------------------------------------------------------
 source CoProcessor.tcl -notrace

@@ -20,10 +20,10 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module pipelined_add_tree #(parameter NINPUTS=8, parameter IWIDTH=8)(
+module pipelined_add_tree #(parameter NINPUTS=1024, parameter IWIDTH=8)(
         input logic clk, rst, 
         input logic [IWIDTH-1:0] data_in [NINPUTS-1:0],
-        output logic [$clog2(NINPUTS)+IWIDTH-1:0] data_out 
+        output logic [$clog2(NINPUTS)+IWIDTH-1:0] data_out
     );
     
     localparam NSTAGES = $clog2(NINPUTS);
@@ -31,17 +31,22 @@ module pipelined_add_tree #(parameter NINPUTS=8, parameter IWIDTH=8)(
     localparam NSUMS = PWIDTH-1;
     localparam SWIDTH = IWIDTH+NSTAGES;
     
+    logic [IWIDTH-1:0] data_in_2 [NINPUTS-1:0];
     logic[SWIDTH-1:0] sum [NSUMS-1:0]; 
     logic[SWIDTH-1:0] next_sum [NSUMS-1:0];
-    integer i;
+
     always_ff @(posedge clk) begin
     if(rst)begin
         for(int i=0; i<NSUMS; i++) begin
             sum[i] <= 0;
         end
+        for(int i=0; i<NINPUTS; i++) begin
+            data_in_2[i] <= 0;
+        end
     end
     else
         sum <= next_sum ;
+        data_in_2 <= data_in;
     end
     int prev_index;
     int curr_index;
@@ -51,9 +56,9 @@ module pipelined_add_tree #(parameter NINPUTS=8, parameter IWIDTH=8)(
             num_sums = PWIDTH>>1;
             for(int j = 0; j<num_sums ; j++) begin
                 if(2*j + 1 <= NINPUTS-1)
-                    next_sum[j] = data_in[2*j] + data_in[2*j+1]; 
+                    next_sum[j] = data_in_2[2*j] + data_in_2[2*j+1]; 
                 else if(2*j == NINPUTS-1)
-                    next_sum[j] = data_in[2*j]; 
+                    next_sum[j] = data_in_2[2*j]; 
             end
             prev_index = 0;
             curr_index = num_sums;
@@ -68,4 +73,7 @@ module pipelined_add_tree #(parameter NINPUTS=8, parameter IWIDTH=8)(
             end
             data_out = sum[NSUMS-1];
     end
+    
+
+    
 endmodule

@@ -26,10 +26,8 @@ module first_comand_dec(
     input logic clk,rst,
     output logic write_en_a,write_en_b,
     output logic [7:0]  data_out,
-    output logic led1,led2,
     output logic [4:0] action_onehot
     );
-    logic [9:0] element_count;
     logic sum,rst_counter,counter_done;
     enum logic [1:0] {idle,writing_a,writing_b} state,next_state;
     
@@ -47,8 +45,6 @@ module first_comand_dec(
         data_out = rx_data;
         rst_counter = 1'b0;
         sum = 1'b0;
-        led1 = 1'b0;
-        led2 = 1'b0;
         action_onehot=6'd0;
         case (state)
             idle: begin
@@ -72,7 +68,6 @@ module first_comand_dec(
                   write_en_a = rx_ready; 
                   next_state = writing_a;
                   sum = rx_ready;
-                  led1 = 1'b1;
                   if (counter_done && rx_ready)
                     next_state = idle;
                   end
@@ -80,7 +75,6 @@ module first_comand_dec(
                   write_en_b = rx_ready; 
                   next_state = writing_b;
                   sum = rx_ready;
-                  led2 = 1'b1;
                   if (counter_done && rx_ready)
                     next_state = idle;
                   end         
@@ -90,10 +84,9 @@ module first_comand_dec(
     
     Counter #(.max_count(1023)) ELEMENT_COUNTER(
     .clk(clk),
-    .rst(~rst & ~rst_counter),
+    .rst(~rst && ~rst_counter),
     .en(sum),
     .rev(1'b0),
-    .count(element_count),
     .done(counter_done)
     );
     

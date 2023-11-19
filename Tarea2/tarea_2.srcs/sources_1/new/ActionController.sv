@@ -24,8 +24,8 @@ module ActionController(
     input logic [4:0] Action,
     output logic StartSending, SaveData, ShowSum,
     output logic [9:0] DoneCounter,
-    output logic [4:0] OpCode,
-    input logic clk, rst
+    output logic [2:0] OpCode,
+    input logic clk,rst
     );
     logic Valid;
     logic PotentialShowSum;
@@ -35,7 +35,7 @@ module ActionController(
         begin
         StartSending=1'b1;
         DoneCounter=10'd1023;
-        SaveData=1'b0;
+        SaveData=1'b1;
         OpCode=3'b100;
         PotentialShowSum=1'b0;
         Valid=1'b1;
@@ -44,7 +44,7 @@ module ActionController(
         begin
         StartSending=1'b1;
         DoneCounter=10'd1023;
-        SaveData=1'b0;
+        SaveData=1'b1;
         OpCode=3'b011;
         PotentialShowSum=1'b0;
         Valid=1'b1;
@@ -83,15 +83,15 @@ module ActionController(
         SaveData=1'b0;
         OpCode=3'b000;
         PotentialShowSum=1'b0;
-        Valid=1'b1;
+        Valid=1'b0;
         end
     endcase
     end
     
     always_ff @(posedge clk) begin
-    if(rst)
-        ShowSum = 0;
-    else
-        ShowSum = PotentialShowSum;
+        if(rst)
+            ShowSum <= 0;
+        else if (Valid)
+            ShowSum <= PotentialShowSum;
     end
 endmodule

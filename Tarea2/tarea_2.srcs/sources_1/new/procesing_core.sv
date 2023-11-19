@@ -20,14 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module procesing_core #(parameter NINPUTS = 8)(
+module procesing_core #(parameter NINPUTS = 1024)(
     input logic [7:0] mem_a [NINPUTS-1:0],mem_b [NINPUTS-1:0],
     output logic [7:0] suma_arr_out[NINPUTS-1:0],
     output logic [7:0] avg_arr_out[NINPUTS-1:0],
-    output logic [$clog2(NINPUTS)+7:0] manhattan
+    output logic [$clog2(NINPUTS)+7:0] manhattan,
+    input logic clk,rst
     );
     
-    logic [7:0] suma_arr [NINPUTS-1:0];
+    logic [8:0] suma_arr [NINPUTS-1:0];
     logic [7:0] diff_arr_out [NINPUTS-1:0];
     
     
@@ -35,15 +36,17 @@ module procesing_core #(parameter NINPUTS = 8)(
     always_comb begin
         for(int i=0; i<NINPUTS; i++) begin
             suma_arr[i] = mem_a[i] + mem_b[i];
-            suma_arr_out[i] = suma_arr[i];
-            avg_arr_out[i] = {1'b0,suma_arr[i][7:1]};
+            suma_arr_out[i] = suma_arr[i][7:0];
+            avg_arr_out[i] = suma_arr[i][8:1];
             diff_arr_out[i] = mem_a[i] < mem_b[i] ? mem_b[i]-mem_a[i] : mem_a[i]-mem_b[i];
         end
     end
     
-    add_tree #(.NINPUTS(NINPUTS), .IWIDTH(8))(
+    pipelined_add_tree #(.NINPUTS(NINPUTS), .IWIDTH(8)) ADD_TREE(
         .data_in(diff_arr_out),
-        .data_out(manhattan)
+        .data_out(manhattan),
+        .clk(clk),
+        .rst(rst)
     );
 
 endmodule

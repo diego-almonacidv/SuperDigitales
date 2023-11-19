@@ -24,9 +24,10 @@ module CoprocesorSevenSegDriver(
     input logic ShowSum,clk, rst,
     input logic [7:0] Manhattan [2:0],
     output logic [7:0] en,
-    output logic [6:0] seven_seg
+    output logic [6:0] seven_seg,
+    output logic dp
     );
-    logic[6:0] A,B,C,D,E,F,G,H;
+    logic[3:0] A,B,C,D,E,F,G,H;
     logic busy, init_conversion;
     logic[31:0] unsigned_input, bcd_output;
     logic [7:0] prevManhattan [2:0];
@@ -42,7 +43,7 @@ module CoprocesorSevenSegDriver(
     logic busy_n;
     always_comb begin
         unsigned_input = {8'd0,prevManhattan[2],prevManhattan[1],prevManhattan[0]};
-        busy_n = ~busy;
+        busy = ~busy_n;
     end
     
     unsigned_to_bcd BCD_converter(
@@ -65,7 +66,8 @@ module CoprocesorSevenSegDriver(
         .E(E),
         .F(F),
         .G(4'd0),
-        .H(4'd0)
+        .H(4'd0),
+        .dp(dp)
     );
 
     always_comb begin

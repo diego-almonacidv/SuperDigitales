@@ -36,11 +36,16 @@ module CoProcessor(
     logic tx_start, rx_ready;
     logic tx_busy;
     logic clk;
+    
+    /*
     clk_wiz_0 ClkDivider(
         .reset(rst),
         .clk_in1(clock),
         .clk_out1(clk)
     );
+    */
+    assign clk = clock;
+    
     uart_basic uart(
       .clk(clk),
       .reset(rst),
@@ -84,15 +89,17 @@ module CoProcessor(
     );
     logic[9:0] DoneCounter;
     logic StartSending, SaveData, ShowSum;
-    logic[2:0] OpCode;
+    logic[2:0] OpCode,OpCode2;
     logic UpdateDisplay;
     ActionController ActionControllerModule(
         .Action(Action),//5 bits
         .DoneCounter(DoneCounter),//10 bits
         .SaveData(SaveData),//1 bit
-        .OpCode(OpCode),//3 bits
+        .OpCode(OpCode2),//3 bits
         .ShowSum(ShowSum),//1 bit
-        .StartSending(StartSending)
+        .StartSending(StartSending),
+        .clk(clk),
+        .rst(rst)
     );
     logic[7:0] Sum_Array[1023:0];
     logic[7:0] Avg_Array[1023:0];
@@ -102,22 +109,32 @@ module CoProcessor(
         .mem_b(dataArrayB),
         .suma_arr_out(Sum_Array),
         .avg_arr_out(Avg_Array),
-        .manhattan({Manhattan[2][1:0],Manhattan[1],Manhattan[0]})
+        .manhattan({Manhattan[2][1:0],Manhattan[1],Manhattan[0]}),
+        .rst(rst),
+        .clk(clk)
     );
+    assign Manhattan[2][7:2]=6'd0;
     logic[7:0] muxOut[1023:0];
+    
+    always_ff @(posedge clk)begin
+        if (rst)
+            OpCode<=3'b000;
+        else if (SaveData)
+            OpCode<=OpCode2;
+    end
     //----------------Mux logic----------------------
     always_comb begin
     case(OpCode)
     3'b000:
         muxOut = Sum_Array;
-    3'b001:
-        muxOut = {Sum_Array[1020:0],Manhattan[2:0]};
     3'b010:
+        muxOut = {Sum_Array[1023:3],Manhattan[2:0]};
+    3'b001:
         muxOut = Avg_Array;
     3'b011:
-        muxOut = dataArrayA;
-    3'b100:
         muxOut = dataArrayB;
+    3'b100:
+        muxOut = dataArrayA;
     default:
         muxOut = Sum_Array;   
     endcase
@@ -125,7 +142,6 @@ module CoProcessor(
     //------------End Mux Logic--------------------
     SendingManager SendingManagerModule (
         .Array(muxOut),
-        .SaveData(SaveData),
         .DoneCounter(DoneCounter),
         .StartSending(StartSending),
         .clk(clk),
@@ -141,7 +157,8 @@ module CoProcessor(
         .rst(rst),
         .Manhattan(muxOut[2:0]),
         .seven_seg(seven_seg),
-        .en(en)
+        .en(en),
+        .dp(dp)
     );
     
 endmodule
